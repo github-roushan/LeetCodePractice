@@ -19,7 +19,6 @@ def C(n, r):
 
 class Solution:
     def subsequencesWithMiddleMode(self, nums: List[int]) -> int:
-        fullCounter = Counter(nums)
         leftCounter = Counter()
         rightCounter = Counter(nums)
         numLen = len(nums)
@@ -72,7 +71,6 @@ class Solution:
                     continue
                 maExcSingleSum = rightSingleSum - (rightCounter[a] + rightCounter[el])
                 maExcPairSum = rightPairSum - maExcSingleSum * (rightCounter[a] + rightCounter[el]) - rightCounter[a] * rightCounter[el]
-                # maExcTripletSum = rightTripletSum - maExcPairSum * (rightCounter[a] + rightCounter[el]) - rightCounter[a] * rightCounter[el] * maExcSingleSum
 
                 total += afre * l * maExcPairSum % MOD
 
@@ -82,7 +80,6 @@ class Solution:
                     continue
                 mcExcSingleSum = leftSingleSum - (leftCounter[c] + leftCounter[el])
                 mcExcPairSum = leftPairSum - mcExcSingleSum * (leftCounter[c] + leftCounter[el]) - leftCounter[c] * leftCounter[el]
-                # mcExcTripletSum = leftTripletSum - mcExcPairSum * (leftCounter[c] + leftCounter[el]) - leftCounter[c] * leftCounter[el] * mcExcSingleSum
 
                 total += r * cfre * mcExcPairSum % MOD
             
